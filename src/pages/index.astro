@@ -15,6 +15,7 @@ import Footer from "@/widgets/footer/widget.astro";
 import HeroSection from "@/widgets/hero/widget.astro";
 import HowItWorksWidget from "@/widgets/how-it-works/widget.astro";
 import AppNav from "@/widgets/navbar/widget.astro";
+import PartnersWidgetAstro from "@/widgets/partners/widget.astro";
 import ProblemSection from "@/widgets/problem/ProblemSection.astro";
 import { ScrollToTop } from "@/widgets/scroll-to-top/widget";
 
@@ -81,6 +82,7 @@ const t = await getTranslations(lang);
       <HowItWorksWidget />
       <ChatExperienceWidget />
       <AboutUs lang={lang} t={t} />
+      <PartnersWidgetAstro />
       <ContactUs lang={lang} t={t} />
       <Footer lang={lang} t={t} />
       <ScrollToTop client:load />

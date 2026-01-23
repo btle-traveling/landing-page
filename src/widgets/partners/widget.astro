@@ -1,0 +1,39 @@
+---
+import { SectionBadge } from "../section-badge/badge";
+import { PartnersWidget } from "./widget";
+---
+
+<section
+  id="partners"
+  class="w-full py-24 relative overflow-hidden bg-transparent"
+>
+  {/* Background Glow */}
+  <div
+    class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] -z-10 animate-pulse"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[150px] -z-10 animate-pulse"
+  >
+  </div>
+
+  <div class="container mx-auto">
+    <div class="text-center">
+      <SectionBadge>Trust & Infrastructure</SectionBadge>
+      <h2
+        class="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-foreground balance animate-in fade-in slide-in-from-bottom-4 duration-700"
+      >
+        Backed by the Best, <br class="hidden md:block" />
+        Integrated with the Giants
+      </h2>
+      <p
+        class="text-xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100"
+      >
+        We've partnered with industry leaders to ensure your travel plans are
+        secure, reliable, and flawlessly executed.
+      </p>
+    </div>
+
+    <PartnersWidget client:load />
+  </div>
+</section>
