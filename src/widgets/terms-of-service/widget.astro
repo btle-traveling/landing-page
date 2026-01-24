@@ -1,0 +1,45 @@
+---
+import { DownloadIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { SectionBadge } from "../section-badge/badge";
+---
+
+<section id="terms-of-service" class="w-full py-24 relative overflow-hidden">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <SectionBadge>Usage Terms</SectionBadge>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 mt-4 gradient-text">
+        Terms of Service
+      </h1>
+
+      <p class="text-xl text-muted-foreground mb-8">
+        Please read our Terms of Service carefully before using our platform.
+      </p>
+
+      <div class="flex justify-center">
+        <a
+          href="/SkySearch_AI_Terms_of_Service.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button className="gap-2" size="lg">
+            <DownloadIcon className="w-4 h-4" />
+            Download Terms of Service (PDF)
+          </Button>
+        </a>
+      </div>
+
+      <div
+        class="mt-12 p-4 border border-border/50 rounded-xl bg-card/50 backdrop-blur-sm"
+      >
+        <p class="text-sm text-muted-foreground">
+          You can view the document directly in your browser or download it for
+          your records. If you have any questions, please contact us at <a
+            href="mailto:legal@skysearch.ai"
+            class="text-primary hover:underline">legal@skysearch.ai</a
+          >.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

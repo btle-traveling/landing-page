@@ -80,6 +80,8 @@ export interface Translations {
 		works: string;
 		career: string;
 		copyright: string;
+		privacyPolicy: string;
+		termsOfService: string;
 	};
 	languageSwitcher: {
 		label: string;
@@ -189,7 +191,10 @@ async function fetchTranslationsFromSheet(): Promise<
 			comparison: {},
 			contactUs: {},
 			aboutUs: {},
-			footer: {},
+			footer: {
+				privacyPolicy: "Privacy Policy",
+				termsOfService: "Terms of Service",
+			},
 			languageSwitcher: {},
 		},
 		uz: {
@@ -199,7 +204,10 @@ async function fetchTranslationsFromSheet(): Promise<
 			comparison: {},
 			contactUs: {},
 			aboutUs: {},
-			footer: {},
+			footer: {
+				privacyPolicy: "Maxfiylik siyosati",
+				termsOfService: "Xizmat ko'rsatish shartlari",
+			},
 			languageSwitcher: {},
 		},
 		ru: {
@@ -209,7 +217,10 @@ async function fetchTranslationsFromSheet(): Promise<
 			comparison: {},
 			contactUs: {},
 			aboutUs: {},
-			footer: {},
+			footer: {
+				privacyPolicy: "Политика конфиденциальности",
+				termsOfService: "Условия использования",
+			},
 			languageSwitcher: {},
 		},
 	};
