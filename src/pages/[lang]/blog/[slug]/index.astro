@@ -1,0 +1,46 @@
+---
+// /blog/index.astro
+import { sanityClient } from "sanity:client";
+import { PortableText } from "astro-portabletext";
+import { ArrowLeft } from "lucide-react";
+import PortableTextImage from "@/components/ui/portable-text-image.astro";
+import MainLayout from "@/layouts/main.astro";
+
+const postId = Astro.params.slug;
+const post = (
+  await sanityClient.fetch(
+    `*[_type == "post" && slug.current == $postId] | order(publishedAt desc)`,
+    { postId },
+  )
+)?.[0];
+
+export const prerender = false;
+
+if (!post) {
+  return Astro.redirect("/404");
+}
+
+const lang = Astro.params.lang;
+const components = {
+  type: {
+    image: PortableTextImage,
+  },
+};
+---
+
+<MainLayout>
+  <section class="container prose prose-stone dark:prose-invert">
+    <a href={`/${lang}/blog`} class="flex items-center gap-1">
+      <ArrowLeft className="w-6 h-4" />
+      Back to blog
+    </a>
+    <h1 class="text-6xl tracking-tight font-bold">{post.title}</h1>
+    <div class="">
+      {
+        Array.isArray(post.body) && (
+          <PortableText components={components} value={post.body} />
+        )
+      }
+    </div>
+  </section>
+</MainLayout>

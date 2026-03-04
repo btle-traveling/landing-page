@@ -1,0 +1,56 @@
+---
+// /blog/index.astro
+import { sanityClient } from "sanity:client";
+import { ChevronRight } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { urlForImage } from "@/integrations/sanity/helpers";
+import MainLayout from "@/layouts/main.astro";
+
+const lang = Astro.params.lang;
+
+const posts = await sanityClient.fetch(
+  `*[_type == "post" && defined(slug) && language == $lang] | order(publishedAt desc)`,
+  { lang },
+);
+export const prerender = false;
+---
+
+<MainLayout>
+  <section class="mx-auto max-w-(--breakpoint-xl) px-6 py-16 xl:px-0">
+    <div class="mt-4 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        posts.map((post: any) => (
+          <Card
+            className="overflow-hidden rounded-md py-0 shadow-none"
+            key={post._id}
+          >
+            <CardHeader className="p-0">
+              <div class="aspect-video w-full border-b bg-muted">
+                <img src={urlForImage(post.image).url()} alt={post.title} />
+              </div>
+            </CardHeader>
+            <CardContent className="pb-6">
+              <h3 class="mt-4 font-semibold text-[1.4rem] tracking-tight">
+                {post.title}
+              </h3>
+              <p class="mt-2 text-muted-foreground line-clamp-3">
+                {post.description}
+              </p>
+              <a
+                class={buttonVariants({
+                  className: "mt-6 shadow-none",
+                  size: "sm",
+                })}
+                href={`/${lang}/blog/${post.slug.current}`}
+                target="_blank"
+              >
+                Read more <ChevronRight />
+              </a>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+</MainLayout>

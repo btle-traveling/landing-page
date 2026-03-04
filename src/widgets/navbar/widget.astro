@@ -8,58 +8,57 @@ import { ThemeSwitcher } from "@/widgets/theme-switcher/widget";
 import { MobileNavbar } from "./mobile-widget";
 
 interface Props {
-	lang: Language;
-	t: Translations;
+  lang: Language;
+  t: Translations;
 }
 
 const { lang, t } = Astro.props;
 
 const navigationItems = [
-	{
-		title: t.nav.features,
-		href: `/${lang}/#features`,
-	},
-	{
-		title: t.nav.aboutUs,
-		href: `/${lang}/#about-us`,
-	},
-	{
-		title: t.nav.contactUs,
-		href: `/${lang}/#contact-us`,
-	},
+  {
+    title: t.nav.features,
+    href: `/${lang}/#features`,
+  },
+  {
+    title: t.nav.aboutUs,
+    href: `/${lang}/#about-us`,
+  },
+  {
+    title: t.nav.contactUs,
+    href: `/${lang}/#contact-us`,
+  },
+  {
+    title: "Blog",
+    href: `/${lang}/blog`,
+  },
 ];
 ---
 
 <header class="bg-background/90 backdrop-blur sticky top-0 z-50 w-full">
-	<div
-		class="container mx-auto flex items-center justify-between gap-2 md:gap-8 px-4 py-3 sm:px-6"
-	>
-		<AppLogo />
-		<div
-			class="text-muted-foreground flex flex-1 items-center gap-8 font-medium md:justify-center lg:gap-16"
-		>
-			{
-				navigationItems.map((item) => (
-					<a
-						href={item.href}
-						class="hover:text-primary max-md:hidden"
-					>
-						{item.title}
-					</a>
-				))
-			}
-		</div>
-		<div class="flex gap-2 items-center">
-			<LoginWidget
-				className="hidden items-center justify-center md:flex"
-			/>
-			<SignupWidget
-				variant="outline"
-				className="hidden items-center justify-center md:flex"
-			/>
-			<ThemeSwitcher client:load />
-			<LanguageSwitcher currentLang={lang} client:load />
-		</div>
-		<MobileNavbar client:media="(max-width: 768px)" />
-	</div>
+  <div
+    class="container mx-auto flex items-center justify-between gap-2 md:gap-8 px-4 py-3 sm:px-6"
+  >
+    <AppLogo />
+    <div
+      class="text-muted-foreground flex flex-1 items-center gap-8 font-medium md:justify-center lg:gap-16"
+    >
+      {
+        navigationItems.map((item) => (
+          <a href={item.href} class="hover:text-primary max-md:hidden">
+            {item.title}
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex gap-2 items-center">
+      <LoginWidget className="hidden items-center justify-center md:flex" />
+      <SignupWidget
+        variant="outline"
+        className="hidden items-center justify-center md:flex"
+      />
+      <ThemeSwitcher client:load />
+      <LanguageSwitcher currentLang={lang} client:load />
+    </div>
+    <MobileNavbar client:media="(max-width: 768px)" />
+  </div>
 </header>
