@@ -34,31 +34,59 @@ const navigationItems = [
 ];
 ---
 
-<header class="bg-background/90 backdrop-blur sticky top-0 z-50 w-full">
-  <div
-    class="container mx-auto flex items-center justify-between gap-2 md:gap-8 px-4 py-3 sm:px-6"
-  >
-    <AppLogo />
-    <div
-      class="text-muted-foreground flex flex-1 items-center gap-8 font-medium md:justify-center lg:gap-16"
-    >
+<header class="absolute top-0 left-0 z-50 w-full py-6">
+  <div class="container mx-auto flex items-center justify-between px-6">
+    <div class="flex items-center gap-2">
+      <!-- Leaf Icon Mockup for "AFRICA TOURS" look -->
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="text-green-500"
+      >
+        <path
+          d="M12 2C12 2 12 10 2 12C12 12 12 22 22 12C12 10 12 2 12 2Z"
+          fill="currentColor"></path>
+      </svg>
+      <span class="text-white font-bold tracking-widest text-lg uppercase"
+        >Africa <span class="font-normal opacity-70">Tours</span></span
+      >
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8">
       {
-        navigationItems.map((item) => (
-          <a href={item.href} class="hover:text-primary max-md:hidden">
-            {item.title}
+        ["HOME", "TOURS", "CATEGORY", "ABOUT US", "CONTACT"].map((item) => (
+          <a
+            href="#"
+            class="text-white/80 hover:text-white text-xs font-semibold tracking-widest transition-colors"
+          >
+            {item}
           </a>
         ))
       }
+    </nav>
+
+    <!-- Mobile Menu Button (Simple for now) -->
+    <div class="md:hidden">
+      <button class="text-white p-2">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="3" y1="12" x2="21" y2="12"></line><line
+            x1="3"
+            y1="6"
+            x2="21"
+            y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg
+        >
+      </button>
     </div>
-    <div class="flex gap-2 items-center">
-      <LoginWidget className="hidden items-center justify-center md:flex" />
-      <SignupWidget
-        variant="outline"
-        className="hidden items-center justify-center md:flex"
-      />
-      <ThemeSwitcher client:load />
-      <LanguageSwitcher currentLang={lang} client:load />
-    </div>
-    <MobileNavbar client:media="(max-width: 768px)" />
   </div>
 </header>

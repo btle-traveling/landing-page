@@ -1,190 +1,157 @@
 ---
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
-import { Button } from "@/components/ui/button";
 import type { Language, Translations } from "@/i18n/utils";
-import { TopPlacesCarousel } from "./components/top-places-carousel";
 
 interface Props {
-	lang: Language;
-	t: Translations;
+  lang: Language;
+  t: Translations;
 }
 
 const { lang, t } = Astro.props;
 
-const topPlaces = [
-	{
-		title: "Dubai Desert Adventure",
-		duration: "7 Days/6 Night",
-		rating: 4.5,
-		image: "/images/dubai.png",
-	},
-	{
-		title: "Bali: Where Serenity Lives 🧘",
-		duration: "9 Days/8 Night",
-		rating: 5,
-		image: "/images/bali.png",
-	},
-	{
-		title: "Maldives Magic Unlocked 🌊",
-		duration: "8 Days/7 Night",
-		rating: 4.5,
-		image: "/images/maldives.png",
-	},
-	{
-		title: "Tashkent City Tour 🇺🇿",
-		duration: "3 Days/2 Night",
-		rating: 4.8,
-		image: "/images/dubai.png", // Reusing image for demo
-	},
-	{
-		title: "Samarkand Silk Road 🕌",
-		duration: "5 Days/4 Night",
-		rating: 4.9,
-		image: "/images/bali.png", // Reusing image for demo
-	},
-	{
-		title: "Bukhara Ancient Spirit ✨",
-		duration: "4 Days/3 Night",
-		rating: 4.7,
-		image: "/images/maldives.png", // Reusing image for demo
-	},
+const blogPosts = [
+  {
+    number: "02",
+    title: "Mountain Sounds",
+    date: "January 27, 12:24 PM",
+    image:
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    number: "03",
+    title: "The Bahamas",
+    date: "January 27, 12:24 PM",
+    image:
+      "https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    number: "04",
+    title: "Singita Sabi Sand",
+    date: "January 27, 12:24 PM",
+    image:
+      "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=400",
+  },
 ];
 ---
 
-<section class="relative min-h-screen pt-32 pb-20 overflow-hidden">
-	<!-- Background Gradients -->
-	<div class="absolute top-0 left-0 w-full h-full -z-10 bg-background">
-		<div
-			class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px]"
-		>
-		</div>
-		<div
-			class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-[120px]"
-		>
-		</div>
-	</div>
+<section
+  class="relative min-h-screen flex items-center overflow-hidden bg-black"
+>
+  <!-- Main Background Image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/hero_bg.png"
+      alt="Hero Background"
+      class="w-full h-full object-cover opacity-80"
+    />
+    <div
+      class="absolute inset-0 bg-linear-to-r from-black/60 via-black/30 to-transparent"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/40"
+    >
+    </div>
+  </div>
 
-	<div class="container mx-auto px-6">
-		<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-			<!-- Left Content -->
-			<div class="lg:col-span-6 pt-10">
-				<motion.h1
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					className="text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]"
-					client:load
-				>
-					From Fragmented Chaos to One Intelligent Journey
-				</motion.h1>
+  <div class="container mx-auto px-6 relative z-10 pt-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Left Content -->
+      <div class="lg:col-span-7">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          client:load
+        >
+          <h1
+            class="text-white text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight"
+          >
+            NEVER STOP <br />
+            EXPLORING THE <br />
+            WORLD
+          </h1>
 
-				<motion.p
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, delay: 0.2 }}
-					className="mt-8 text-lg text-muted-foreground/80 leading-relaxed max-w-xl"
-					client:load
-				>
-					SkySearch turns disconnected searches, tabs, and redirects
-					into a single intelligent travel flow — planning, booking,
-					and guiding your journey across Central Asia.
-				</motion.p>
+          <p
+            class="mt-8 text-white/70 text-sm md:text-base leading-relaxed max-w-xl font-light"
+          >
+            Lorem ipsum dolor sit amet consectetur. Tellus cursus at nulla in ut
+            feugiat vestibulum. Ac ultrices pellentesque pulvinar pellentesque
+            tellus at uii feugiat vestibulum. Tellus cursus at nulla in ut
+            feugiât vestibulum. Ac ultrices pellentesque pulvinar pellentesque
+            tellus at vel.
+          </p>
 
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, delay: 0.4 }}
-					className="mt-10"
-					client:load
-				>
-					<Button
-						size="lg"
-						className="rounded-full px-8 py-6 text-lg font-medium group bg-foreground text-background hover:bg-foreground/90 transition-all"
-					>
-						Explore More
-						<ArrowRight
-							className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-						/>
-					</Button>
-				</motion.div>
-			</div>
+          <div class="mt-10 flex flex-wrap gap-4 items-center">
+            <a
+              href={`/${lang}/contact`}
+              class="bg-[hsl(140,60%,45%)] hover:bg-[hsl(140,60%,40%)] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 group transition-all"
+            >
+              CONTACT US
+              <div
+                class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center"
+              >
+                <ArrowUpRight
+                  className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                />
+              </div>
+            </button>
+          </div>
+        </motion.div>
+      </div>
 
-			<!-- Right Content (Image with Cutout) -->
-			<div class="lg:col-span-6 relative group">
-				<motion.div
-					initial={{ opacity: 0, scale: 0.95 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{ duration: 1 }}
-					className="relative"
-					client:load
-				>
-					<!-- The Image with mask/clip-path -->
-					<div
-						class="relative w-full aspect-4/3 rounded-[3rem] overflow-hidden hero-image-container"
-					>
-						<img
-							src="/images/hero-sunset.png"
-							alt="Travel Hero"
-							class="w-full h-full object-cover"
-						/>
+      <!-- Right Content: Blog Post Cards -->
+      <div class="lg:col-span-5 flex flex-col gap-6">
+        {
+          blogPosts.map((post, index) => (
+            <motion.a
+              href="/blog"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+              className="group relative flex items-center bg-[#1A1A1A] border border-white/5 rounded-[3rem] overflow-hidden transition-all cursor-pointer"
+              client:load
+            >
+              <div class="flex items-center gap-6 px-8 py-5 w-full relative z-10"> 
+                <!-- Text Content -->
+                <div class="flex flex-col gap-1">
+                  <h3 class="text-white font-bold tracking-tight leading-tight transition-colors">
+                    {post.title.split(" ").map((word, i, arr) => (
+                      <>
+                        {word} {i === 0 && arr.length > 1 && <br />}
+                      </>
+                    ))}
+                  </h3>
+                  <p class="text-white/40 text-[11px] font-semibold tracking-widest uppercase leading-relaxed mt-3 max-w-[100px]">
+                    {post.date}
+                  </p>
+                </div>
+              </div>
 
-						<!-- Overlay Info -->
-						<div
-							class="absolute bottom-8 right-8 bg-black/40 backdrop-blur-xl border border-white/10 rounded-full py-2 px-4 flex items-center gap-3"
-						>
-							<div class="flex -space-x-3">
-								{
-									[1, 2, 3].map((i) => (
-										<div class="w-10 h-10 rounded-full border-2 border-background overflow-hidden bg-muted">
-											<img
-												src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 1}`}
-												alt="Avatar"
-											/>
-										</div>
-									))
-								}
-							</div>
-							<div class="flex flex-col">
-								<span
-									class="text-white font-bold text-sm tracking-tight"
-									>100k</span
-								>
-								<span
-									class="text-white/60 text-[10px] uppercase font-semibold"
-									>People loved</span
-								>
-							</div>
-						</div>
-					</div>
-				</motion.div>
-			</div>
-		</div>
+              <!-- Card Image with fade -->
+              <div class="absolute right-0 top-0 bottom-0 w-[60%] overflow-hidden">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                />
+                <div class="absolute inset-0 bg-linear-to-r from-[#1A1A1A] via-[#1A1A1A]/90 to-transparent" />
+              </div>
+            </motion.a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 
-		<!-- Top Places Section -->
-		<div class="mt-32">
-			<motion.h2
-				initial={{ opacity: 0, x: -20 }}
-				whileInView={{ opacity: 1, x: 0 }}
-				viewport={{ once: true }}
-				className="text-2xl font-bold text-foreground mb-8"
-				client:load
-			>
-				Top places to Travel
-			</motion.h2>
-
-			<div class="-mx-6">
-				<TopPlacesCarousel places={topPlaces} client:load />
-			</div>
-		</div>
-	</div>
+  <!-- Design Accent: Bottom curved white divider if any? Image shows only header/hero -->
+  <!-- <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent z-10"></div> -->
 </section>
 
 <style>
-	.hero-image-container {
-		/* Cutout effect mimicking the screenshot */
-		mask-image: url("data:image/svg+xml,%3Csvg width='800' height='600' viewBox='0 0 800 600' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M800 60C800 26.8629 773.137 0 740 0H240C206.863 0 180 26.8629 180 60V120C180 153.137 153.137 180 120 180H60C26.8629 180 0 206.863 0 240V540C0 573.137 26.8629 600 60 600H740C773.137 600 800 573.137 800 540V60Z' fill='black'/%3E%3C/svg%3E");
-		mask-size: cover;
-		mask-repeat: no-repeat;
-	}
+  h1 {
+    font-family: "Geist", sans-serif;
+    letter-spacing: -0.02em;
+  }
 </style>

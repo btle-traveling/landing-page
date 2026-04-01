@@ -6,13 +6,11 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { urlForImage } from "@/integrations/sanity/helpers";
 import MainLayout from "@/layouts/main.astro";
+import { getBlogPosts } from "@/lib/blog";
 
 const lang = Astro.params.lang;
 
-const posts = await sanityClient.fetch(
-  `*[_type == "post" && defined(slug) && language == $lang] | order(publishedAt desc)`,
-  { lang },
-);
+const posts = await getBlogPosts(lang || "en");
 export const prerender = false;
 ---
 

@@ -2,8 +2,10 @@
 // /blog/index.astro
 import { sanityClient } from "sanity:client";
 import { PortableText } from "astro-portabletext";
+import { SEO } from "astro-seo";
 import { ArrowLeft } from "lucide-react";
 import PortableTextImage from "@/components/ui/portable-text-image.astro";
+import { urlForImage } from "@/integrations/sanity/helpers";
 import MainLayout from "@/layouts/main.astro";
 
 const postId = Astro.params.slug;
@@ -29,6 +31,33 @@ const components = {
 ---
 
 <MainLayout>
+  <head>
+    <SEO
+      title={post.title}
+      description={post.description}
+      openGraph={{
+        basic: {
+          title: post.title,
+          type: "A type.",
+          image: urlForImage(post.image).url(),
+        },
+      }}
+      twitter={{
+        creator: "@btle",
+      }}
+      extend={{
+        meta: [
+          {
+            name: "twitter:image",
+            content: urlForImage(post.image).url(),
+          },
+          { name: "twitter:title", content: post.title },
+          { name: "twitter:description", content: post.description },
+        ],
+      }}
+    />
+  </head>
+
   <section class="container prose prose-stone dark:prose-invert">
     <a href={`/${lang}/blog`} class="flex items-center gap-1">
       <ArrowLeft className="w-6 h-4" />
