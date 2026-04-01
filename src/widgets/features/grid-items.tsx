@@ -56,7 +56,7 @@ const items = [
 	{
 		title: "All-in-One AI Ecosystem",
 		description:
-			"SkySearch is the single interface for the entire journey. Users can book flights, find hotels, and get local visa advice in one continuous chat thread. No more tab switching.",
+			"BTLE is the single interface for the entire journey. Users can book flights, find hotels, and get local visa advice in one continuous chat thread. No more tab switching.",
 		footer: "10 hours of planning in 10 minutes.",
 		header: (
 			<div className="w-full max-h-80 relative overflow-hidden">

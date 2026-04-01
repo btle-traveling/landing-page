@@ -1,4 +1,4 @@
-# SkySearch Landing Page - Technical Architecture
+# BTLE Landing Page - Technical Architecture
 
 > [!NOTE]
 > This document governs the software architecture of the landing page repository. It focuses on performance, Astro best practices, and minimal JavaScript footprint.
