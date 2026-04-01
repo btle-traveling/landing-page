@@ -1,16 +1,25 @@
 ---
-import { Image } from "astro:assets";
-import appLogo from "../../../public/images/blue_logo.svg";
-
 const lang = Astro.params.lang || "en";
 ---
 
 <a href={`/${lang}`}>
-  <Image
-    src={appLogo}
-    alt="SkySearch"
-    class="rounded-lg overflow-hidden"
-    width={50}
-    height={2}
-  />
+  <svg
+    width="200"
+    height="40"
+    viewBox="0 0 150 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- Art, nature, beauty icons (leaf, brushstroke, lotus) -->
+    <g>
+      <!-- Text BTLE -->
+      <text
+        x="40"
+        y="30"
+        font-size="20"
+        fill="rgb(29, 162, 103)"
+        font-weight="bold">BTLE</text
+      >
+    </g>
+  </svg>
 </a>

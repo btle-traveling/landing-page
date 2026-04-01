@@ -11,33 +11,36 @@ import { navigationItems } from "./items";
 
 export function MobileNavbar() {
 	return (
-		<div className="flex items-center gap-6">
+		<div className="flex items-center gap-2">
 			<DropdownMenu>
-				<DropdownMenuTrigger className="md:hidden" asChild>
-					<Button variant="outline" size="icon">
-						<MenuIcon />
+				<DropdownMenuTrigger asChild>
+					<Button
+						variant="ghost"
+						size="icon"
+						className="text-white hover:bg-white/10"
+					>
+						<MenuIcon className="h-6 w-6" />
 						<span className="sr-only">Menu</span>
 					</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className="w-56" align="end">
-					<DropdownMenuGroup>
+				<DropdownMenuContent
+					className="w-screen max-w-[300px] bg-[#1A1A1A] border-white/10 text-white"
+					align="end"
+				>
+					<DropdownMenuGroup className="p-2">
 						{navigationItems.map((item, index) => (
-							<DropdownMenuItem key={index}>
-								<a href={item.href}>{item.title}</a>
+							<DropdownMenuItem
+								key={index}
+								className="focus:bg-white/10 focus:text-white rounded-lg cursor-pointer"
+							>
+								<a
+									href={item.href}
+									className="w-full py-2 text-sm font-semibold tracking-widest"
+								>
+									{item.title}
+								</a>
 							</DropdownMenuItem>
 						))}
-						<DropdownMenuItem className="flex gap-2 items-center">
-							<Button size="default" className="md:hidden block">
-								Log in
-							</Button>
-							<Button
-								size="default"
-								variant="outline"
-								className="md:hidden block"
-							>
-								Sign up
-							</Button>
-						</DropdownMenuItem>
 					</DropdownMenuGroup>
 				</DropdownMenuContent>
 			</DropdownMenu>

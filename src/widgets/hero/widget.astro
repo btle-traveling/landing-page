@@ -1,7 +1,9 @@
 ---
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import { Button } from "@/components/ui/button";
 import type { Language, Translations } from "@/i18n/utils";
+import BlogPostCards from "./components/blog-post-cards.astro";
 
 interface Props {
   lang: Language;
@@ -68,9 +70,8 @@ const blogPosts = [
           <h1
             class="text-white text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight"
           >
-            NEVER STOP <br />
-            EXPLORING THE <br />
-            WORLD
+            EXPLORE <br />
+            UZBEKISTAN
           </h1>
 
           <p
@@ -84,10 +85,7 @@ const blogPosts = [
           </p>
 
           <div class="mt-10 flex flex-wrap gap-4 items-center">
-            <a
-              href={`/${lang}/contact`}
-              class="bg-[hsl(140,60%,45%)] hover:bg-[hsl(140,60%,40%)] text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 group transition-all"
-            >
+            <Button variant="default" className="rounded-full px-8 py-4">
               CONTACT US
               <div
                 class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center"
@@ -96,52 +94,12 @@ const blogPosts = [
                   className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                 />
               </div>
-            </button>
+            </Button>
           </div>
         </motion.div>
       </div>
 
-      <!-- Right Content: Blog Post Cards -->
-      <div class="lg:col-span-5 flex flex-col gap-6">
-        {
-          blogPosts.map((post, index) => (
-            <motion.a
-              href="/blog"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-              className="group relative flex items-center bg-[#1A1A1A] border border-white/5 rounded-[3rem] overflow-hidden transition-all cursor-pointer"
-              client:load
-            >
-              <div class="flex items-center gap-6 px-8 py-5 w-full relative z-10"> 
-                <!-- Text Content -->
-                <div class="flex flex-col gap-1">
-                  <h3 class="text-white font-bold tracking-tight leading-tight transition-colors">
-                    {post.title.split(" ").map((word, i, arr) => (
-                      <>
-                        {word} {i === 0 && arr.length > 1 && <br />}
-                      </>
-                    ))}
-                  </h3>
-                  <p class="text-white/40 text-[11px] font-semibold tracking-widest uppercase leading-relaxed mt-3 max-w-[100px]">
-                    {post.date}
-                  </p>
-                </div>
-              </div>
-
-              <!-- Card Image with fade -->
-              <div class="absolute right-0 top-0 bottom-0 w-[60%] overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                />
-                <div class="absolute inset-0 bg-linear-to-r from-[#1A1A1A] via-[#1A1A1A]/90 to-transparent" />
-              </div>
-            </motion.a>
-          ))
-        }
-      </div>
+      <BlogPostCards />
     </div>
   </div>
 

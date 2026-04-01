@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import type { Language, Translations } from "@/i18n/utils";
-import { AppLogo } from "../logo/widget";
+import AppLogo from "../logo/widget.astro";
 
 interface Props {
   lang: Language;
@@ -17,49 +17,71 @@ interface Props {
 const { lang, t } = Astro.props;
 ---
 
-<footer class="w-full text-foreground z-50">
+<footer class="w-full text-foreground z-50 py-12 bg-[#1A1A1A] space-y-6">
   <div
-    class="container mx-auto flex items-center justify-between gap-3 px-4 py-4 max-md:flex-col sm:px-6 sm:py-6 md:gap-6 md:py-8"
+    class="container mx-auto flex items-center justify-between gap-3 px-6 max-md:flex-col"
   >
-    <a href={`/${lang}/`}>
-      <div class="flex items-center gap-3">
-        <AppLogo />
-      </div>
-    </a>
+    <AppLogo lang={lang} />
 
-    <div class="flex items-center gap-5 whitespace-nowrap">
-      <a href={`/${lang}/#about-us`}>{t.footer.about}</a>
-      <a href={`/${lang}/#features`}>{t.footer.features}</a>
-      <a href="#">{t.footer.works}</a>
-      <a href="#">{t.footer.career}</a>
+    <div class="flex items-center gap-8 whitespace-nowrap">
+      <a
+        href={`/${lang}/#destinations`}
+        class="text-white/60 hover:text-white text-xs font-semibold tracking-widest transition-colors uppercase"
+        >Destinations</a
+      >
+      <a
+        href={`/${lang}/blog`}
+        class="text-white/60 hover:text-white text-xs font-semibold tracking-widest transition-colors uppercase"
+        >Blog</a
+      >
+      <a
+        href={`/${lang}/#about-us`}
+        class="text-white/60 hover:text-white text-xs font-semibold tracking-widest transition-colors uppercase"
+        >About Us</a
+      >
+      <a
+        href={`/${lang}/#contact-us`}
+        class="text-white/60 hover:text-white text-xs font-semibold tracking-widest transition-colors uppercase"
+        >Contact Us</a
+      >
     </div>
 
-    <div class="flex items-center gap-4">
-      <a href="#">
-        <FacebookIcon />
+    <div class="flex items-center gap-4 text-white/40">
+      <a
+        href="#"
+        class="hover:text-white transition-colors hover:scale-110 duration-200"
+      >
+        <FacebookIcon size={20} />
       </a>
-      <a href="#">
-        <InstagramIcon />
+      <a
+        href="#"
+        class="hover:text-white transition-colors hover:scale-110 duration-200"
+      >
+        <InstagramIcon size={20} />
       </a>
-      <a href="#">
-        <TwitterIcon />
+      <a
+        href="#"
+        class="hover:text-white transition-colors hover:scale-110 duration-200"
+      >
+        <TwitterIcon size={20} />
       </a>
-      <a href="#">
-        <YoutubeIcon />
+      <a
+        href="#"
+        class="hover:text-white transition-colors hover:scale-110 duration-200"
+      >
+        <YoutubeIcon size={20} />
       </a>
     </div>
   </div>
 
-  <Separator />
+  <Separator className="bg-white/10" />
 
   <div
     class="mx-auto flex w-full flex-col items-center justify-center gap-4 px-4 py-8 sm:px-6 sm:flex-row sm:justify-between"
   >
-    <p
-      class="text-center font-medium text-balance text-sm text-muted-foreground"
-    >
+    <p class="text-center font-medium text-balance text-sm text-white/40">
       {`©${new Date().getFullYear()}`}
-      <a href={`/${lang}/`} class="hover:underline">SkySearch</a>. {
+      <a href={`/${lang}/`} class="hover:underline">BTLE</a>. {
         t.footer.copyright
       }
     </p>

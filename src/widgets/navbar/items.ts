@@ -1,18 +1,18 @@
 export const navigationItems = [
 	{
-		title: "Features",
-		href: "/#features",
+		title: "DESTINATIONS",
+		href: "/#destinations",
 	},
 	{
-		title: "Compare",
-		href: "/#comparison",
+		title: "BLOG",
+		href: "/blog",
 	},
 	{
-		title: "About Us",
+		title: "ABOUT US",
 		href: "/#about-us",
 	},
 	{
-		title: "Contact Us",
+		title: "CONTACT US",
 		href: "/#contact-us",
 	},
 ];
