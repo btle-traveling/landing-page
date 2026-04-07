@@ -10,6 +10,7 @@ import { getTranslations, type Language, languages } from "@/i18n/utils";
 import AboutUs from "@/widgets/about-us/widget.astro";
 import ChatExperienceWidget from "@/widgets/chat-experience/widget";
 import { ContactUs } from "@/widgets/contact-us";
+import Destinations from "@/widgets/destinations/widget.astro";
 import Features from "@/widgets/features/widget.astro";
 import Footer from "@/widgets/footer/widget.astro";
 import HeroSection from "@/widgets/hero/widget.astro";
@@ -80,12 +81,7 @@ const t = await getTranslations(lang);
     <AuroraBackground>
       <AppNav lang={lang} t={t} />
       <HeroSection lang={lang} t={t} />
-      <HowItWorksWidget client:load />
-      <ChatExperienceWidget client:load />
-      <Features lang={lang} t={t} />
-      <CompareDemo lang={lang} t={t} />
-      <AboutUs lang={lang} t={t} />
-      <ContactUs lang={lang} t={t} />
+      <Destinations lang={lang} t={t} />
       <Footer lang={lang} t={t} />
       <ScrollToTop client:load />
     </AuroraBackground>

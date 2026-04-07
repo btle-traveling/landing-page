@@ -1,0 +1,36 @@
+---
+import type { Translations } from "@/i18n/utils";
+import { getDestinations } from "@/lib/destination";
+import { DestinationsCarousel } from "./destinations-carousel";
+
+interface Props {
+  lang: string;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+const destinations = await getDestinations();
+---
+
+<section id="destinations" class="destinations-section">
+  <div class="container mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-extrabold mb-4 text-white tracking-tight">
+        {t.destinations?.title || "Top Destinations"}
+      </h2>
+      <p class="max-w-xl mx-auto text-white/60 leading-relaxed">
+        {
+          t.destinations?.subtitle ||
+            "Lorem ipsum dolor sit amet consectetur. Tellus cursus at nulla in ut feugiat lum. Ac ultrices pellentesque pulvinar pellentesque tellus at vel"
+        }
+      </p>
+    </div>
+  </div>
+  <DestinationsCarousel destinations={destinations} t={t} client:load />
+</section>
+
+<style>
+  .destinations-section {
+    padding: 80px 0;
+  }
+</style>

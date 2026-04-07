@@ -83,6 +83,10 @@ export interface Translations {
 		privacyPolicy: string;
 		termsOfService: string;
 	};
+	destinations: {
+		title: string;
+		subtitle: string;
+	};
 	languageSwitcher: {
 		label: string;
 	};
@@ -191,6 +195,7 @@ async function fetchTranslationsFromSheet(): Promise<
 			comparison: {},
 			contactUs: {},
 			aboutUs: {},
+			destinations: {},
 			footer: {
 				privacyPolicy: "Privacy Policy",
 				termsOfService: "Terms of Service",
@@ -204,6 +209,7 @@ async function fetchTranslationsFromSheet(): Promise<
 			comparison: {},
 			contactUs: {},
 			aboutUs: {},
+			destinations: {},
 			footer: {
 				privacyPolicy: "Maxfiylik siyosati",
 				termsOfService: "Xizmat ko'rsatish shartlari",
@@ -217,6 +223,7 @@ async function fetchTranslationsFromSheet(): Promise<
 			comparison: {},
 			contactUs: {},
 			aboutUs: {},
+			destinations: {},
 			footer: {
 				privacyPolicy: "Политика конфиденциальности",
 				termsOfService: "Условия использования",
